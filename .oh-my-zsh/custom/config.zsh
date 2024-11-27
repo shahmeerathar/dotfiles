@@ -14,7 +14,7 @@ if type brew &>/dev/null; then
 fi
 
 # fzf
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude "Pictures/Photos Library.photoslibrary/" --exclude Movies/TV --exclude Music/Music --exclude Library/ --exclude .zsh_sessions --exclude .DS_Store --exclude .nvm/ --exclude .npm --exclude .cache/ --exclude .oh-my-zsh/themes --exclude .oh-my-zsh/plugins --exclude .oh-my-zsh/lib --exclude .oh-my-zsh/.github --exclude .oh-my-zsh/tools --exclude .tldrc/'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude "Pictures/Photos Library.photoslibrary/" --exclude Movies/TV --exclude Music/Music --exclude Library/ --exclude .zsh_sessions --exclude .DS_Store --exclude .nvm/ --exclude .npm --exclude .cache/ --exclude .oh-my-zsh/themes --exclude .oh-my-zsh/plugins --exclude .oh-my-zsh/lib --exclude .oh-my-zsh/.github --exclude .oh-my-zsh/tools --exclude .tldrc/ --exclude .dotfiles/'
 export FZF_DEFAULT_OPTS="--height 40% --layout reverse --border"
 alias fzfpreview='fzf --preview="bat --color=always {}" --height=100% --border=none --layout=default'
 
