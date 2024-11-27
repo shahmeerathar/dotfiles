@@ -5,6 +5,7 @@ alias brewtree="brew deps --tree --installed"
 alias dev="cd ~/Developer"
 alias tree="ls --long --tree"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 # eza
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -20,7 +21,6 @@ alias fzfpreview='fzf --preview="bat --color=always {}" --height=100% --border=n
 # nvm
 # Lazy loading nvm. From:
 # https://github.com/undg/zsh-nvm-lazy-load/blob/master/zsh-nvm-lazy-load.plugin.zsh
-
 typeset -ga __lazyLoadLabels=(nvm node npm npx pnpm yarn pnpx bun bunx)
 
 __load-nvm() {
