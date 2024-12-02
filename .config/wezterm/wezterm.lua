@@ -35,5 +35,4 @@ config.keys = {
 }
 
 config.alternate_buffer_wheel_scroll_speed = 1
-
 return config
