@@ -11,5 +11,6 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
-vim.opt.scrolloff = 8
-vim.opt.colorcolumn = "80"
+vim.opt.scrolloff = 15
+
+vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true })
