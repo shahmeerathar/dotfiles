@@ -5,7 +5,7 @@ return {
         local config = require("nvim-treesitter.configs")
         require 'nvim-treesitter.install'.compilers = { "clang" }
         config.setup({
-            ensure_installed = { "lua" }, 
+            ensure_installed = { "lua", "cpp", "python" }, 
             highlight = { enable = true },
             indent = { enable = true }
         })
