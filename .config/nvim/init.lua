@@ -14,5 +14,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Needed since I lazy load nvm in my shell since it's super slow
+vim.env.PATH = vim.env.PATH .. ":" .. os.getenv("HOME") .. "/.nvm/versions/node/v23.3.0/bin"
+
 require("vim-opts")
 require("lazy").setup("plugins")
