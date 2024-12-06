@@ -12,5 +12,6 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 vim.opt.scrolloff = 15
+vim.opt.signcolumn = 'yes'
 
 vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true })
