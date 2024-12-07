@@ -17,9 +17,10 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
-            lspconfig.clangd.setup({})
-            lspconfig.pylsp.setup({})
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            lspconfig.lua_ls.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.pylsp.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
