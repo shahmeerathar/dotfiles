@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "clangd", "pyright" }
+                ensure_installed = { "lua_ls" , "clangd", "pylsp"}
             })
         end
     },
@@ -19,7 +19,7 @@ return {
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({})
             lspconfig.clangd.setup({})
-            lspconfig.pyright.setup({})
+            lspconfig.pylsp.setup({})
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
