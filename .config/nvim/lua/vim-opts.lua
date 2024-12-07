@@ -14,5 +14,7 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 15
 vim.opt.signcolumn = 'yes'
 
+vim.opt.splitright = true
+
 vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ft', ':Ex<CR>', { silent = true })
