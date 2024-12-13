@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "clangd", "pylsp" }
+                ensure_installed = { "lua_ls", "pylsp" }
             })
         end
     },
@@ -36,7 +36,13 @@ return {
                     }
                 }
             })
-            lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                cmd = {
+                    "clangd",
+                    "--header-insertion=never"
+                }
+            })
             lspconfig.pylsp.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
