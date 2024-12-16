@@ -15,6 +15,11 @@ vim.opt.scrolloff = 15
 vim.opt.signcolumn = 'yes'
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- since lualine already displays these
+vim.opt.showmode = false
+vim.opt.shortmess:append('S')
 
 vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ft', ':Ex<CR>', { silent = true })
