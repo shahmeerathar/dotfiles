@@ -22,6 +22,8 @@ vim.opt.showmode = false
 vim.opt.shortmess:append('S')
 
 vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ft', ':Ex<CR>', { silent = true })
+
+vim.keymap.set('n', '<M-o>', ':copen<CR>', { silent = true })
+vim.keymap.set('n', '<M-c>', ':cclose<CR>', { silent = true })
 vim.keymap.set('n', '<M-j>', ':cnext<CR>', { silent = true })
 vim.keymap.set('n', '<M-k>', ':cprev<CR>', { silent = true })
