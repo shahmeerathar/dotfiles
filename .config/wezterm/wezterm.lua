@@ -35,4 +35,6 @@ config.keys = {
 }
 
 config.alternate_buffer_wheel_scroll_speed = 1
+
+config.max_fps = 120
 return config
