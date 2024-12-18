@@ -31,3 +31,10 @@ vim.keymap.set('n', '<M-k>', ':cprev<CR>', { silent = true, desc = "Quickfix pre
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+vim.keymap.set("i", '""', '""<Left>')
+vim.keymap.set("i", "''", "''<Left>")
+vim.keymap.set("i", "()", "()<Left>")
+vim.keymap.set("i", "[]", "[]<Left>")
+vim.keymap.set("i", "{}", "{}<Left>")
+vim.keymap.set("i", "<>", "<><Left>")
