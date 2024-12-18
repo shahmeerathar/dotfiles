@@ -27,3 +27,7 @@ vim.keymap.set('n', '<M-o>', ':copen<CR>', { silent = true, desc = "Quickfix ope
 vim.keymap.set('n', '<M-c>', ':cclose<CR>', { silent = true, desc = "Quickfix close" })
 vim.keymap.set('n', '<M-j>', ':cnext<CR>', { silent = true, desc = "Quickfix next" })
 vim.keymap.set('n', '<M-k>', ':cprev<CR>', { silent = true, desc = "Quickfix previous" })
+
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
