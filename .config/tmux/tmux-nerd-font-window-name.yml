@@ -7,3 +7,4 @@ config:
 icons:
   zsh: "" # overwrite with your own symbol (Nerd Font icon, emoji, whatever!)
   bash: ""
+  cbrun: ""
