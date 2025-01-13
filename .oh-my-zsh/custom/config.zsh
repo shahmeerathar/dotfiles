@@ -4,7 +4,8 @@ alias addalias="vim $ZSH/custom/config.zsh"
 alias brewtree="brew deps --tree --installed"
 alias dev="cd ~/Developer"
 alias tree="ls --long --tree"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias espidf=". ~/Developer/esp32/esp-idf/export.sh"
 
 # eza
 if type brew &>/dev/null; then
