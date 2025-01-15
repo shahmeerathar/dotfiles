@@ -40,7 +40,8 @@ return {
                 capabilities = capabilities,
                 cmd = {
                     "clangd",
-                    "--header-insertion=never"
+                    "--header-insertion=never",
+                    "--fallback-style=webkit"
                 }
             })
             lspconfig.pylsp.setup({ capabilities = capabilities })
