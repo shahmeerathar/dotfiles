@@ -7,7 +7,8 @@ return {
         harpoon:setup()
 
         vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon add" })
-        vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon list" })
+        vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+            { desc = "Harpoon list" })
         vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon previous" })
         vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon next" })
 
@@ -16,5 +17,21 @@ return {
                 harpoon:list():select(idx)
             end, { desc = string.format("Harpoon jump to %d", idx) })
         end
+
+        harpoon:extend({
+            UI_CREATE = function(cx)
+                vim.keymap.set("n", "<C-v>", function()
+                    harpoon.ui:select_menu_item({ vsplit = true })
+                end, { buffer = cx.bufnr })
+
+                vim.keymap.set("n", "<C-x>", function()
+                    harpoon.ui:select_menu_item({ split = true })
+                end, { buffer = cx.bufnr })
+
+                vim.keymap.set("n", "<C-t>", function()
+                    harpoon.ui:select_menu_item({ tabedit = true })
+                end, { buffer = cx.bufnr })
+            end,
+        })
     end
 }
