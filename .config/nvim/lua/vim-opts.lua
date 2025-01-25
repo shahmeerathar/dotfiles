@@ -29,8 +29,8 @@ vim.keymap.set('n', '<M-j>', ':cnext<CR>', { silent = true, desc = "Quickfix nex
 vim.keymap.set('n', '<M-k>', ':cprev<CR>', { silent = true, desc = "Quickfix previous" })
 
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("i", '""', '""<Left>')
 vim.keymap.set("i", "''", "''<Left>")
@@ -38,3 +38,15 @@ vim.keymap.set("i", "()", "()<Left>")
 vim.keymap.set("i", "[]", "[]<Left>")
 vim.keymap.set("i", "{}", "{}<Left>")
 vim.keymap.set("i", "<>", "<><Left>")
+
+vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+        ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    },
+    paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+        ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+    },
+}
