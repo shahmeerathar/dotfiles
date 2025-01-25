@@ -26,7 +26,7 @@ return {
                             version = 'LuaJIT'
                         },
                         diagnostics = {
-                            globals = {'vim'},
+                            globals = { 'vim' },
                         },
                         workspace = {
                             library = {
@@ -60,7 +60,19 @@ return {
                     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
                     vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-                    vim.keymap.set('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if (client.name == 'clangd' and vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
+                        vim.keymap.set('n', '<leader>cf', function()
+                            local current_file = vim.fn.expand('%')
+                            local clang_format_cmd = string.format(
+                                '/cb/tools/llvm/201910211756-206/bin/clang-format -i %s', current_file)
+                            vim.fn.system(clang_format_cmd)
+                            vim.cmd('edit')
+                        end, { buffer = event.buf, desc = "vim.lsp.buf.format() (cb clang-format)" })
+                    else
+                        vim.keymap.set('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+                    end
                 end
             })
         end
