@@ -62,16 +62,33 @@ return {
                     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    opts.desc = "vim.lsp.buf.format()"
+                    local formatting_func = function()
+                        vim.cmd('lua vim.lsp.buf.format()')
+                    end
                     if (client.name == 'clangd' and vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
-                        vim.keymap.set('n', '<leader>cf', function()
+                        opts.desc = "vim.lsp.buf.format() (cb clang-format)"
+                        formatting_func = function()
                             local current_file = vim.fn.expand('%')
                             local clang_format_cmd = string.format(
                                 '/cb/tools/llvm/201910211756-206/bin/clang-format -i %s', current_file)
                             vim.fn.system(clang_format_cmd)
                             vim.cmd('edit')
-                        end, { buffer = event.buf, desc = "vim.lsp.buf.format() (cb clang-format)" })
-                    else
-                        vim.keymap.set('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+                        end
+                        vim.api.nvim_create_autocmd('BufWritePost', {
+                            buffer = event.buf,
+                            desc = 'Format on save',
+                            callback = formatting_func
+                        })
+                    end
+                    vim.keymap.set('n', '<leader>cf', formatting_func, opts)
+
+                    if (not ((client.name == 'pylsp' or client.name == 'clangd') and vim.fn.getenv("HOSTNAME") == "shahmeera-dev")) then
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            buffer = event.buf,
+                            desc = 'Format on save',
+                            callback = formatting_func
+                        })
                     end
                 end
             })
