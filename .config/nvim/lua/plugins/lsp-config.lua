@@ -62,11 +62,15 @@ return {
                     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if not client then
+                        return
+                    end
+                    local lsp_name = client.name
                     opts.desc = "vim.lsp.buf.format()"
                     local formatting_func = function()
                         vim.cmd('lua vim.lsp.buf.format()')
                     end
-                    if (client.name == 'clangd' and vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
+                    if (lsp_name == 'clangd' and vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
                         opts.desc = "vim.lsp.buf.format() (cb clang-format)"
                         formatting_func = function()
                             local current_file = vim.fn.expand('%')
@@ -83,7 +87,7 @@ return {
                     end
                     vim.keymap.set('n', '<leader>cf', formatting_func, opts)
 
-                    if (not ((client.name == 'pylsp' or client.name == 'clangd') and vim.fn.getenv("HOSTNAME") == "shahmeera-dev")) then
+                    if (not ((lsp_name == 'pylsp' or lsp_name == 'clangd') and vim.fn.getenv("HOSTNAME") == "shahmeera-dev")) then
                         vim.api.nvim_create_autocmd('BufWritePre', {
                             buffer = event.buf,
                             desc = 'Format on save',
