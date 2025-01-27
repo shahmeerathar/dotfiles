@@ -6,6 +6,7 @@ alias dev="cd ~/Developer"
 alias tree="ls --long --tree"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias espidf=". ~/Developer/esp32/esp-idf/export.sh"
+alias findalias="eval \$(alias | fzf | sed 's/=.*//')"
 
 # eza
 if type brew &>/dev/null; then
