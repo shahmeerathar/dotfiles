@@ -1,12 +1,14 @@
 # Aliases
 alias zshrc="vim ~/.zshrc"
-alias addalias="vim $ZSH/custom/config.zsh" 
+alias addalias="nvim $ZSH/custom/config.zsh" 
 alias brewtree="brew deps --tree --installed"
 alias dev="cd ~/Developer"
 alias tree="ls --long --tree"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias espidf=". ~/Developer/esp32/esp-idf/export.sh"
 alias findalias="eval \$(alias | fzf | sed 's/=.*//')"
+alias llm="ollama run \$(ollama ls | sed '1d' | fzf | awk '{print \$1}' | tee /dev/stderr)"
+alias llmstop="ollama ps | awk 'NR > 1 {print \$1}' | xargs -n1 ollama stop"
 
 # eza
 if type brew &>/dev/null; then
