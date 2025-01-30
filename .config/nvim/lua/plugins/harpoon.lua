@@ -12,7 +12,7 @@ return {
         vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon previous" })
         vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon next" })
 
-        for _, idx in ipairs { 1, 2, 3, 4, 5 } do
+        for _, idx in ipairs { 1, 2, 3, 4, 5, 6, 7, 8, 9 } do
             vim.keymap.set("n", string.format("<leader>%d", idx), function()
                 harpoon:list():select(idx)
             end, { desc = string.format("Harpoon jump to %d", idx) })
