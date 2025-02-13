@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp" }
+                ensure_installed = { "lua_ls", "pylsp", "vtsls" }
             })
         end
     },
@@ -45,6 +45,7 @@ return {
                 }
             })
             lspconfig.pylsp.setup({ capabilities = capabilities })
+            lspconfig.vtsls.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
