@@ -22,6 +22,31 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude "Pictu
 export FZF_DEFAULT_OPTS="--height 40% --layout reverse --border"
 alias fzfpreview='fzf --preview="bat --color=always {}" --height=100% --border=none --layout=default'
 
+# brew
+brew_write_formula_list() {
+    BREW_FORMULAE="$HOME/.brew_formulae"
+    brew leaves > "$BREW_FORMULAE"
+}
+
+brew_install_all_packages() {
+    BREW_FORMULAE="$HOME/.brew_formulae"
+    if [ ! -f "$BREW_FORMULAE" ]; then
+        echo "'$BREW_FORMULAE' not found."
+        exit 1
+    fi
+
+    echo "'$BREW_FORMULAE' found."
+    xargs brew install < "$BREW_FORMULAE"
+}
+
+brew_uninstall_all_packages() {
+    while [[ `brew list | wc -l` -ne 0 ]]; do
+        for EACH in `brew list`; do
+            brew uninstall --ignore-dependencies $EACH --force
+        done
+    done
+}
+
 # nvm
 # Lazy loading nvm. From:
 # https://github.com/undg/zsh-nvm-lazy-load/blob/master/zsh-nvm-lazy-load.plugin.zsh
