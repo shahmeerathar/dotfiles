@@ -9,6 +9,22 @@ alias espidf=". ~/Developer/esp32/esp-idf/export.sh"
 alias findalias="eval \$(alias | fzf | sed 's/=.*//')"
 alias llm="ollama run \$(ollama ls | sed '1d' | fzf | awk '{print \$1}' | tee /dev/stderr)"
 alias llmstop="ollama ps | awk 'NR > 1 {print \$1}' | xargs -n1 ollama stop"
+alias venv='source ~/.venvs/$(ls ~/.venvs | fzf)/bin/activate'
+alias mkvenv="create_venv"
+
+create_venv() {
+    if [ -z "$1" ]; then
+        echo "Error: Please specify a venv name."
+        return 1
+    fi
+    VENVNAME="$1"
+    if [[ "$VENVNAME" != *-venv ]]; then
+        VENVNAME="${VENVNAME}-venv"
+    fi
+    mkdir -p ~/.venvs
+    python3 -m venv ~/.venvs/"$VENVNAME"
+    echo "Virtual environment '$VENVNAME' created at ~/.venvs/$VENVNAME"
+}
 
 # eza
 if type brew &>/dev/null; then
