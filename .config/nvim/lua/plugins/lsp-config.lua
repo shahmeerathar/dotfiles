@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "vtsls" }
+                ensure_installed = { "lua_ls", "vtsls" }
             })
         end
     },
@@ -44,7 +44,6 @@ return {
                     "--fallback-style=webkit"
                 }
             })
-            lspconfig.pylsp.setup({ capabilities = capabilities })
             lspconfig.vtsls.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -66,26 +65,13 @@ return {
                     if not client then
                         return
                     end
-                    local lsp_name = client.name
-                    opts.desc = "vim.lsp.buf.format()"
+
                     local formatting_func = function()
                         vim.cmd('lua vim.lsp.buf.format()')
                     end
-                    if (lsp_name == 'clangd' and vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
-                        opts.desc = "vim.lsp.buf.format() (cb clang-format)"
-                        formatting_func = function()
-                            local current_file = vim.fn.expand('%')
-                            local clang_format_cmd = string.format(
-                                '/cb/tools/llvm/201910211756-206/bin/clang-format -i %s', current_file)
-                            vim.fn.system(clang_format_cmd)
-                            vim.cmd('edit')
-                        end
-                        vim.api.nvim_create_autocmd('BufWritePost', {
-                            buffer = event.buf,
-                            desc = 'Format on save',
-                            callback = formatting_func
-                        })
-                    end
+
+                    local lsp_name = client.name
+                    opts.desc = "vim.lsp.buf.format()"
                     vim.keymap.set('n', '<leader>cf', formatting_func, opts)
 
                     if (not ((lsp_name == 'pylsp' or lsp_name == 'clangd') and vim.fn.getenv("HOSTNAME") == "shahmeera-dev")) then
@@ -94,6 +80,20 @@ return {
                             desc = 'Format on save',
                             callback = formatting_func
                         })
+                    end
+                end
+            })
+
+            vim.api.nvim_create_autocmd("BufWritePost", {
+                pattern = "*.{c,cc,cpp,h,hh,hpp}",
+                desc = 'Format on save',
+                callback = function(args)
+                    if (vim.fn.getenv("HOSTNAME") == "shahmeera-dev") then
+                        local filename = vim.api.nvim_buf_get_name(args.buf)
+                        local cmd = "/cb/tools/llvm/201910211756-206/bin/clang-format -i " ..
+                            vim.fn.shellescape(filename)
+                        os.execute(cmd)
+                        vim.cmd("silent! edit!")
                     end
                 end
             })
