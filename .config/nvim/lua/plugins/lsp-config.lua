@@ -12,7 +12,7 @@ return {
         config = function()
             if (IS_CB) then
                 require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls" }
+                    ensure_installed = { "lua_ls", "ruff" }
                 })
             else
                 require("mason-lspconfig").setup({
@@ -56,9 +56,9 @@ return {
 
             if (not IS_CB) then
                 lspconfig.pyright.setup({ capabilities = capabilities })
-                lspconfig.ruff.setup({ capabilities = capabilities })
                 lspconfig.vtsls.setup({ capabilities = capabilities })
             end
+            lspconfig.ruff.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
@@ -88,7 +88,7 @@ return {
                     opts.desc = "vim.lsp.buf.format()"
                     vim.keymap.set('n', '<leader>cf', formatting_func, opts)
 
-                    if (not ((lsp_name == 'pylsp' or lsp_name == 'clangd') and IS_CB)) then
+                    if (not ((lsp_name == 'ruff' or lsp_name == 'clangd') and IS_CB)) then
                         vim.api.nvim_create_autocmd('BufWritePre', {
                             buffer = event.buf,
                             desc = 'Format on save',
