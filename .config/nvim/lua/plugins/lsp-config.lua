@@ -16,7 +16,7 @@ return {
                 })
             else
                 require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls", "clangd", "pyright", "ruff", "vtsls" }
+                    ensure_installed = { "lua_ls", "clangd", "pyright", "ruff", "vtsls", "rust_analyzer" }
                 })
             end
         end
@@ -59,6 +59,7 @@ return {
                 lspconfig.vtsls.setup({ capabilities = capabilities })
             end
             lspconfig.ruff.setup({ capabilities = capabilities })
+            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
