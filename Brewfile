@@ -7,6 +7,7 @@ brew "dust"
 brew "eza"
 brew "fd"
 brew "fzf"
+brew "kanata"
 brew "neovim"
 brew "ninja"
 brew "ollama", restart_service: :changed
