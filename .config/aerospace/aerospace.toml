@@ -81,7 +81,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-    if.app-id = 'com.apple.reminders'
+    if.app-id = 'com.apple.finder'
     check-further-callbacks = false
     run = ['layout floating']
 
