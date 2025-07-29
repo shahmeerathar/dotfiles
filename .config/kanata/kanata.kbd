@@ -6,31 +6,74 @@
   process-unmapped-keys yes
 )
 
-(defsrc
-  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
-  caps a ;
-  fn
-)
+(defsrc )
 
 (defvar
-  tap-time 100
-  hold-time 150
+  tot 220
+  ;; ctrlhold 450
+  ;; althold 400
+  ;; methold 300
+  ;; sfthold 160
+  ctrlhold 150
+  althold 150
+  methold 150
+  sfthold 150
+)
+
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
+(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
+  (tap-hold $timeouttap $timeouthold 
+    (multi $keytap @.tp) 
+    $keyhold
+  )
+)
+
+(deftemplate homerowmodfiltered (timeouttap timeouthold keytap keyhold typinglist)
+  (tap-hold-release-keys $timeouttap $timeouthold
+    (multi $keytap @.tp)
+    $keyhold
+    $typinglist
+  )
 )
 
 (defalias
-  a (tap-hold $tap-time $hold-time a lalt)
-  ; (tap-hold $tap-time $hold-time ; ralt)
-  fnl (tap-hold $tap-time $hold-time fn (layer-toggle fn))
+  .tp (switch
+        () (multi
+             (layer-switch typing)
+             (on-idle 55 tap-vkey to-base)
+           ) break
+      )
+  .spc-typing (multi (layer-switch base) spc)
+  fnl (tap-hold $tot $tot fn (layer-toggle fn))
 )
 
-(deflayer base
-  brdn brup mctl sls dtn dnd prev pp next mute vold volu
-  lctrl @a @;
-  @fnl
+(deflayermap (base)
+  ;; f (t! homerowmod $tot $sfthold f lsft)
+  ;; j (t! homerowmod $tot $sfthold j rsft)
+  ;; d (t! homerowmod $tot $methold d lmet)
+  ;; k (t! homerowmod $tot $methold k rmet)
+  ;; s (t! homerowmodfiltered $tot $althold s lalt (a))
+  ;; l (t! homerowmod $tot $althold l ralt)
+  ;; a (t! homerowmod $tot $ctrlhold a lctrl)
+  ;; ; (t! homerowmod $tot $ctrlhold ; rctrl)
+  a (t! homerowmod $tot 150 a lalt)
+  ; (t! homerowmod $tot 150 ; ralt)
+  f1 brdn f2 brup f3 mctl f4 sls f5 dtn f6 dnd f7 prev f8 pp f9 next f10 mute f11 vold f12 volu
+  q (multi q @.tp) w (multi w @.tp) e (multi e @.tp) r (multi r @.tp) t (multi t @.tp) y (multi y @.tp) u (multi u @.tp) i (multi i @.tp) o (multi o @.tp) p (multi p @.tp) g (multi g @.tp) h (multi h @.tp) z (multi z @.tp) x (multi x @.tp) c (multi c @.tp) v (multi v @.tp) b (multi b @.tp) n (multi n @.tp) m (multi m @.tp) 
+  caps lctrl fn @fnl
 )
 
-(deflayer fn
-  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
-  lrld a ;
-  fn
+(deflayermap (typing) 
+  f1 brdn f2 brup f3 mctl f4 sls f5 dtn f6 dnd f7 prev f8 pp f9 next f10 mute f11 vold f12 volu
+  a a b b c c d d e e f f g g h h i i j j k k l l m m n n o o p p q q r r s s t t u u v v w w x x y y z z 
+  caps lctrl fn @fnl
+)
+
+(deflayermap (fn) 
+  f1 f1 f2 f2 f3 f3 f4 f4 f5 f5 f6 f6 f7 f7 f8 f8 f9 f9 f10 f10 f11 f11 f12 f12  
+  a a b b c c d d e e f f g g h h i i j j k k l l m m n n o o p p q q r r s s t t u u v v w w x x y y z z 
+  caps lrld fn fn
 )
