@@ -28,16 +28,19 @@ vim.keymap.set('n', '<M-c>', ':cclose<CR>', { silent = true, desc = "Quickfix cl
 vim.keymap.set('n', '<M-n>', ':cnext<CR>', { silent = true, desc = "Quickfix next" })
 vim.keymap.set('n', '<M-p>', ':cprev<CR>', { silent = true, desc = "Quickfix previous" })
 
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
 vim.keymap.set("i", '""', '""<Left>')
 vim.keymap.set("i", "''", "''<Left>")
 vim.keymap.set("i", "()", "()<Left>")
 vim.keymap.set("i", "[]", "[]<Left>")
 vim.keymap.set("i", "{}", "{}<Left>")
 vim.keymap.set("i", "<>", "<><Left>")
+
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set('n', '<leader>cp', function()
+    vim.fn.setreg('+', vim.fn.expand('%'))
+end, { desc = 'Copy file name to clipboard' })
 
 vim.g.clipboard = {
     name = 'OSC 52',
