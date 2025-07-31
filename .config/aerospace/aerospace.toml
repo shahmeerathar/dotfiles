@@ -91,6 +91,11 @@ automatically-unhide-macos-hidden-apps = false
     run = ['layout floating']
 
 [[on-window-detected]]
+    if.app-id = 'com.apple.FaceTime'
+    check-further-callbacks = false
+    run = ['layout floating']
+
+[[on-window-detected]]
     if.app-id ='com.apple.Safari'
     run = ['move-node-to-workspace 2']
 
