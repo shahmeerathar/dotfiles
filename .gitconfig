@@ -1,3 +1,8 @@
 [user]
 	name = Shahmeer Athar
 	email = shahmeer.athar@gmail.com
+	signingkey = /Users/shahmeerathar/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
