@@ -35,6 +35,7 @@
               catppuccin.homeModules.catppuccin
             ];
           };
+          nixpkgs = {config.allowUnfree = true;};
         }
         nix-homebrew.darwinModules.nix-homebrew
         {

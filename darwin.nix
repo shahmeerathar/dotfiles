@@ -10,8 +10,12 @@
     pkgs.fd
     pkgs.fzf
     pkgs.kanata
+    pkgs.mas
+    pkgs.monitorcontrol
     pkgs.neovim
+    pkgs.obsidian
     pkgs.oh-my-zsh
+    pkgs.raycast
     pkgs.ripgrep
     pkgs.tmux
     pkgs.yq
@@ -26,6 +30,12 @@
       "logi-options+"
     ];
     onActivation.cleanup = "zap";
+    masApps = {
+      "AdBlock for Safari" = 1402042596;
+      "Adobe Lightroom" = 1451544217;
+      "Amphetamine" = 937984704;
+      "PCalc" = 403504866;
+    };
   };
 
   users.users.shahmeerathar = {
@@ -76,13 +86,13 @@
       "/System/Applications/Messages.app"
       "/System/Applications/Reminders.app"
       "/System/Applications/Calendar.app"
-      # "/Applications/Obsidian.app"
+      "/Applications/Nix Apps/Obsidian.app"
       "/System/Applications/System Settings.app"
       "/System/Applications/Utilities/Activity Monitor.app"
       "/Applications/Ghostty.app"
       "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
       "/System/Applications/Photos.app"
-      # "/Applications/Adobe Lightroom Classic.app"
+      "/Applications/Adobe Lightroom.app"
       "/System/Applications/Maps.app"
       "/System/Applications/Home.app"
       "/System/Applications/iPhone Mirroring.app"
