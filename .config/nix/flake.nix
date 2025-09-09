@@ -8,6 +8,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs @ {
@@ -16,6 +17,7 @@
     nixpkgs,
     home-manager,
     nix-homebrew,
+    catppuccin,
   }: let
     darwinConfig = import ./darwin.nix;
     homeConfig = import ./home.nix;
@@ -27,7 +29,12 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.shahmeerathar = homeConfig;
+          home-manager.users.shahmeerathar = {
+            imports = [
+              ./home.nix
+              catppuccin.homeModules.catppuccin
+            ];
+          };
         }
         nix-homebrew.darwinModules.nix-homebrew
         {
