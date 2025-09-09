@@ -16,7 +16,7 @@ return {
                 })
             else
                 require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls", "clangd", "pyright", "ruff", "vtsls", "rust_analyzer" }
+                    ensure_installed = { "lua_ls", "clangd", "ruff", "rust_analyzer" }
                 })
             end
         end

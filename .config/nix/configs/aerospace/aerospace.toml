@@ -128,7 +128,7 @@ automatically-unhide-macos-hidden-apps = false
     run = ['move-node-to-workspace 5']
 
 [workspace-to-monitor-force-assignment]
-    1 = 'main'
+    1 = 'secondary'
     2 = 'main'
     3 = 'main'
     4 = 'secondary'
