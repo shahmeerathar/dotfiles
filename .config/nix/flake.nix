@@ -6,22 +6,29 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     self,
     nix-darwin,
     nixpkgs,
+    home-manager,
     nix-homebrew,
   }: let
     darwinConfig = import ./darwin.nix;
+    homeConfig = import ./home.nix;
   in {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#Shahmeers-MacBook-Pro
     darwinConfigurations."Shahmeers-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [
         darwinConfig
-        {system.configurationRevision = self.rev or self.dirtyRev or null;}
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.shahmeerathar = homeConfig;
+        }
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
@@ -30,6 +37,7 @@
             user = "shahmeerathar";
           };
         }
+        {system.configurationRevision = self.rev or self.dirtyRev or null;}
       ];
     };
   };

@@ -12,12 +12,26 @@
     pkgs.kanata
     pkgs.neovim
     pkgs.oh-my-zsh
-    pkgs.zsh-powerlevel10k
     pkgs.ripgrep
     pkgs.tmux
     pkgs.yq
     pkgs.zoxide
+    pkgs.zsh-powerlevel10k
   ];
+
+  homebrew = {
+    enable = true;
+    casks = [
+      "ghostty"
+      "logi-options+"
+    ];
+    onActivation.cleanup = "zap";
+  };
+
+  users.users.shahmeerathar = {
+    name = "shahmeerathar";
+    home = "/Users/shahmeerathar";
+  };
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -31,6 +45,9 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  programs.zsh.enable = true;
+  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
   system.primaryUser = "shahmeerathar";
 
@@ -85,13 +102,4 @@
   };
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
-
-  homebrew = {
-    enable = true;
-    casks = [
-      "ghostty"
-      "logi-options+"
-    ];
-    onActivation.cleanup = "zap";
-  };
 }
