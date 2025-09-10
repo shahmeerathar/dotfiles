@@ -19,33 +19,39 @@
     nix-homebrew,
     catppuccin,
   }: let
-    darwinConfig = import ./darwin.nix;
-    homeConfig = import ./home.nix;
+    mkDarwinConfig = extraModules: homeConfig:
+      nix-darwin.lib.darwinSystem {
+        modules =
+          [
+            ./darwin/darwin.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.shahmeerathar = {
+                  imports = [
+                    ./home/home.nix
+                    homeConfig
+                    catppuccin.homeModules.catppuccin
+                  ];
+                };
+              };
+              nixpkgs = {config.allowUnfree = true;};
+            }
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = false;
+                user = "shahmeerathar";
+              };
+            }
+          ]
+          ++ extraModules;
+      };
   in {
-    darwinConfigurations."Shahmeers-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [
-        darwinConfig
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.shahmeerathar = {
-            imports = [
-              ./home.nix
-              catppuccin.homeModules.catppuccin
-            ];
-          };
-          nixpkgs = {config.allowUnfree = true;};
-        }
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = false;
-            user = "shahmeerathar";
-          };
-        }
-      ];
-    };
+    darwinConfigurations."Shahmeers-MacBook-Pro" = mkDarwinConfig [./darwin/personal.nix] ./home/personal.nix;
+    darwinConfigurations."Shahmeers-Work-MacBook-Pro" = mkDarwinConfig [./darwin/work.nix] ./home/work.nix;
   };
 }

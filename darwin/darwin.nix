@@ -32,7 +32,6 @@
     onActivation.cleanup = "zap";
     masApps = {
       "AdBlock for Safari" = 1402042596;
-      "Adobe Lightroom" = 1451544217;
       "Amphetamine" = 937984704;
       "PCalc" = 403504866;
     };
@@ -81,22 +80,6 @@
     dock.expose-group-apps = true;
     dock.mru-spaces = false;
     dock.wvous-br-corner = 1;
-    dock.persistent-apps = [
-      "/System/Applications/Music.app"
-      "/System/Applications/Messages.app"
-      "/System/Applications/Reminders.app"
-      "/System/Applications/Calendar.app"
-      "/Applications/Nix Apps/Obsidian.app"
-      "/System/Applications/System Settings.app"
-      "/System/Applications/Utilities/Activity Monitor.app"
-      "/Applications/Ghostty.app"
-      "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
-      "/System/Applications/Photos.app"
-      "/Applications/Adobe Lightroom.app"
-      "/System/Applications/Maps.app"
-      "/System/Applications/Home.app"
-      "/System/Applications/iPhone Mirroring.app"
-    ];
 
     # Trackpad
     trackpad.FirstClickThreshold = 2;
@@ -107,8 +90,8 @@
     NSGlobalDomain."com.apple.swipescrolldirection" = false;
 
     # Keyboard
-    NSGlobalDomain.InitialKeyRepeat = 15;
-    NSGlobalDomain.KeyRepeat = 2;
+    NSGlobalDomain.InitialKeyRepeat = 10;
+    NSGlobalDomain.KeyRepeat = 1;
   };
 
   launchd.daemons."com.shahmeerathar.kanata".serviceConfig = {
