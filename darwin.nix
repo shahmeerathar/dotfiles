@@ -110,6 +110,23 @@
     NSGlobalDomain.InitialKeyRepeat = 15;
     NSGlobalDomain.KeyRepeat = 2;
   };
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToControl = true;
+
+  launchd.daemons."com.shahmeerathar.kanata".serviceConfig = {
+    ProgramArguments = ["/run/current-system/sw/bin/kanata" "-c" "/Users/shahmeerathar/.config/kanata/kanata.kbd"];
+    RunAtLoad = true;
+    KeepAlive = true;
+    StandardOutPath = "/Library/Logs/Kanata/kanata.out.log";
+    StandardErrorPath = "/Library/Logs/Kanata/kanata.err.log";
+  };
+
+  launchd.daemons."com.shahmeerathar.karabiner-vhiddaemon".serviceConfig = {
+    ProgramArguments = ["/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"];
+    RunAtLoad = true;
+    KeepAlive = true;
+  };
+
+  launchd.daemons."com.shahmeerathar.karabiner-vhidmanager".serviceConfig = {
+    ProgramArguments = ["/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon" "activate"];
+    RunAtLoad = true;
+  };
 }
