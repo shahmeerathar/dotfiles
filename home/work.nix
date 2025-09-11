@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./darwin.nix];
+
   programs.git = {
     enable = true;
     userEmail = "shahmeer.athar@cerebras.net";

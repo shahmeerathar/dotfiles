@@ -3,23 +3,12 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = [
     pkgs.aerospace
-    pkgs.bat
-    pkgs.alejandra
-    pkgs.dust
-    pkgs.eza
-    pkgs.fd
-    pkgs.fzf
     pkgs.kanata
     pkgs.mas
     pkgs.monitorcontrol
-    pkgs.neovim
     pkgs.obsidian
     pkgs.oh-my-zsh
     pkgs.raycast
-    pkgs.ripgrep
-    pkgs.tmux
-    pkgs.yq
-    pkgs.zoxide
     pkgs.zsh-powerlevel10k
   ];
 
