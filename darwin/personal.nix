@@ -1,4 +1,30 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  spyder = pkgs.stdenv.mkDerivation rec {
+    name = "spyder";
+    pname = "spyder";
+
+    src = pkgs.fetchurl {
+      url = "https://dci-industrial-downloads.azureedge.net/spyder/Spyder_6.3.pkg.zip";
+      sha256 = "sha256-ITCRG+npSMF0oEkxHDxD0emUDtBhqAs2eBZeO2OozdU=";
+      curlOpts = "-L -H Accept:application/octet-stream";
+    };
+
+    nativeBuildInputs = with pkgs; [unzip xar cpio];
+
+    unpackPhase = ''
+      unzip $src
+      xar -xf Spyder_6.3.pkg
+      cd Spyder.pkg
+      cat Payload | gunzip -dc | cpio -i
+    '';
+
+    installPhase = ''
+      mkdir -p $out/Applications
+      cp -r Applications/* $out/Applications/
+    '';
+  };
+in {
+  environment.systemPackages = [spyder];
   homebrew.masApps = {
     "Adobe Lightroom" = 1451544217;
   };
