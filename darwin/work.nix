@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  homebrew = {
+    casks = [
+      "microsoft-teams"
+    ];
+  };
   system.defaults = {
     dock.persistent-apps = [
       "/System/Applications/Music.app"
@@ -11,6 +16,8 @@
       "/Applications/Ghostty.app"
       "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
       "/Applications/Slack.app"
+      "/System/Applications/Mail.app"
+      "/Applications/Microsoft Teams.app"
       "/System/Applications/Maps.app"
     ];
   };
