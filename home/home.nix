@@ -33,14 +33,22 @@ in {
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "fzf" "zoxide" "tldr" "man" "web-search" "eza"];
-      custom = "/Users/shahmeerathar/.config/oh-my-zsh/";
     };
     initContent = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
+    shellAliases = {
+      dev = "cd ~/Developer";
+      tree = "ls --long --tree";
+      findalias = "eval \$(alias | fzf | sed 's/=.*//')";
+      fzfpreview = "fzf --preview=\"bat --color=always {}\" --height=100% --border=none --layout=default";
+    };
+    sessionVariables = {
+      FZF_DEFAULT_COMMAND = "fd --type f";
+      FZF_DEFAULT_OPTS = "--height 40% --layout reverse --border";
+    };
   };
   home.file.".p10k.zsh".source = ../configs/p10k/p10k.zsh;
-  home.file.".config/oh-my-zsh".source = ../configs/oh-my-zsh;
 
   programs.tmux = {
     enable = true;

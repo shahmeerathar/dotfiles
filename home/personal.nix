@@ -9,4 +9,10 @@
       user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
+
+  programs.zsh = {
+    shellAliases = {
+      dev = "cd ~/Developer";
+    };
+  };
 }
