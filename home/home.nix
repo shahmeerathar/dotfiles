@@ -30,44 +30,46 @@ in {
 
   programs.zsh = {
     enable = true;
+    dotDir = "/Users/shahmeerathar/.cache/zsh";
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "fzf" "zoxide" "tldr" "man" "web-search" "eza"];
     };
     initContent = ''
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
     '';
     shellAliases = {
-      dev = "cd ~/Developer";
       tree = "ls --long --tree";
       findalias = "eval \$(alias | fzf | sed 's/=.*//')";
       fzfpreview = "fzf --preview=\"bat --color=always {}\" --height=100% --border=none --layout=default";
+      vim = "vim -u $HOME/.config/vim/vimrc";
+      vi = "vi -u $HOME/.config/vim/vimrc";
     };
     sessionVariables = {
       FZF_DEFAULT_COMMAND = "fd --type f";
       FZF_DEFAULT_OPTS = "--height 40% --layout reverse --border";
+      LESSHISTFILE = "$HOME/.cache/less/history";
     };
   };
-  home.file.".p10k.zsh".source = ../configs/p10k/p10k.zsh;
+  home.file.".config/p10k".source = ../configs/p10k;
 
   programs.tmux = {
     enable = true;
-    plugins = [
-      {
-        plugin = tmux-nerd-font-window-name;
-      }
-    ];
+    keyMode = "vi";
+    baseIndex = 1;
+    historyLimit = 5000;
+    clock24 = true;
+    extraConfig =
+      builtins.readFile ../configs/tmux/tmux.conf
+      + "set -g @catppuccin_application_icon \"#(${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/bin/tmux-nerd-font-window-name #{pane_current_command} 1)\"\n"
+      + "run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux\n"
+      + "run-shell ${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux\n";
   };
-  catppuccin.tmux = {
-    enable = true;
-    extraConfig = "set -g @catppuccin_application_icon \"#(${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/bin/tmux-nerd-font-window-name #{pane_current_command} 2)\"";
-  };
-  home.file.".tmux.conf".source = ../configs/tmux/tmux.conf;
   home.file.".config/tmux/tmux-nerd-font-window-name.yml".source = ../configs/tmux/tmux-nerd-font-window-name.yml;
 
   home.file.".config/aerospace".source = ../configs/aerospace;
   home.file.".config/ghostty".source = ../configs/ghostty;
   home.file.".config/kanata".source = ../configs/kanata;
   home.file.".config/nvim".source = ../configs/nvim;
-  home.file.".vimrc".source = ../configs/vim/vimrc;
+  home.file.".config/vim".source = ../configs/vim;
 }
