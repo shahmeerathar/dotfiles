@@ -9,7 +9,7 @@
     pkgs.obsidian
     pkgs.oh-my-zsh
     pkgs.raycast
-    pkgs.zsh-powerlevel10k
+    pkgs.starship
   ];
 
   homebrew = {
@@ -43,9 +43,6 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
-
-  programs.zsh.enable = true;
-  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
   system.primaryUser = "shahmeerathar";
 

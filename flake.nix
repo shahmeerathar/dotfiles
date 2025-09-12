@@ -48,8 +48,8 @@
           ++ extraModules;
       };
     mkHomeConfig = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [./home/home.nix ./home/devserver.nix];
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [./home/home.nix ./home/devserver.nix];
     };
   in {
     darwinConfigurations."Shahmeers-MacBook-Pro" = mkDarwinConfig [./darwin/personal.nix] ./home/personal.nix;
