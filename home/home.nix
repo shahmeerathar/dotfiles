@@ -25,11 +25,14 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.neovim
+    pkgs.nerd-fonts.symbols-only
     pkgs.ripgrep
     pkgs.tmux
     pkgs.yq
     pkgs.zoxide
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.home-manager.enable = true;
 
@@ -50,6 +53,13 @@ in {
         plugin = pkgs.tmuxPlugins.kanagawa;
         extraConfig = ''
           set -g @kanagawa-theme 'dragon'
+          set -g @kanagawa-show-flags true
+          set -g @kanagawa-show-empty-plugins false
+          set -g @kanagawa-git-disable-status false
+          set -g @kanagawa-git-show-remote-status true
+          set -g @kanagawa-show-ssh-only-when-connected true
+          set -g @kanagawa-plugins "git ssh-session"
+
         '';
       }
       {
