@@ -8,7 +8,6 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs @ {
@@ -17,7 +16,6 @@
     nixpkgs,
     home-manager,
     nix-homebrew,
-    catppuccin,
   }: let
     mkDarwinConfig = extraModules: homeConfig:
       nix-darwin.lib.darwinSystem {
@@ -33,7 +31,6 @@
                   imports = [
                     ./home/home.nix
                     homeConfig
-                    catppuccin.homeModules.catppuccin
                   ];
                 };
               };

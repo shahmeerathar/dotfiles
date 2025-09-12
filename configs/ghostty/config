@@ -1,8 +1,8 @@
-theme = catppuccin-mocha
+theme = Kanagawa Dragon
 font-size = 14
 macos-titlebar-style = transparent
 mouse-hide-while-typing = true
 window-padding-balance = true
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
-background-opacity=0.999
+background-opacity=1
 macos-option-as-alt=left

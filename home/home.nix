@@ -47,8 +47,6 @@ in {
     clock24 = true;
     extraConfig =
       builtins.readFile ../configs/tmux/tmux.conf
-      + "set -g @catppuccin_application_icon \"#(${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/bin/tmux-nerd-font-window-name #{pane_current_command} 1)\"\n"
-      + "run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux\n"
       + "run-shell ${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux\n";
   };
 
