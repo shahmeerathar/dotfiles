@@ -45,9 +45,19 @@ in {
     baseIndex = 1;
     historyLimit = 5000;
     clock24 = true;
+    plugins = [
+      {
+        plugin = pkgs.tmuxPlugins.kanagawa;
+        extraConfig = ''
+          set -g @kanagawa-theme 'dragon'
+        '';
+      }
+      {
+        plugin = tmux-nerd-font-window-name;
+      }
+    ];
     extraConfig =
-      builtins.readFile ../configs/tmux/tmux.conf
-      + "run-shell ${tmux-nerd-font-window-name}/share/tmux-plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux\n";
+      builtins.readFile ../configs/tmux/tmux.conf;
   };
 
   home.file = {
