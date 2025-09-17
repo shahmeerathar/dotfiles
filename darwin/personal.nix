@@ -4,8 +4,8 @@
     pname = "spyder";
 
     src = pkgs.fetchurl {
-      url = "https://dci-industrial-downloads.azureedge.net/spyder/Spyder_6.3.pkg.zip";
-      sha256 = "sha256-ITCRG+npSMF0oEkxHDxD0emUDtBhqAs2eBZeO2OozdU=";
+      url = "https://dci-industrial-downloads.azureedge.net/spyder/Spyder_6.3.1.pkg.zip";
+      sha256 = "sha256-Jy/uzyer/m6QJnF0AspTJ2q53hNlS4zSBZ+Mk1K6xYc=";
       curlOpts = "-L -H Accept:application/octet-stream";
     };
 
@@ -13,7 +13,7 @@
 
     unpackPhase = ''
       unzip $src
-      xar -xf Spyder_6.3.pkg
+      xar -xf Spyder_6.3.1.pkg
       cd Spyder.pkg
       cat Payload | gunzip -dc | cpio -i
     '';
@@ -24,7 +24,10 @@
     '';
   };
 in {
-  environment.systemPackages = [spyder];
+  environment.systemPackages = [
+    spyder
+    pkgs.iina
+  ];
   homebrew.masApps = {
     "Adobe Lightroom" = 1451544217;
   };
