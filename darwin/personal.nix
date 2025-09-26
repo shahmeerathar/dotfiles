@@ -30,6 +30,7 @@ in {
   ];
   homebrew.masApps = {
     "Adobe Lightroom" = 1451544217;
+    "Starry Landscape Tracker" = 550326617;
   };
 
   system.defaults = {
