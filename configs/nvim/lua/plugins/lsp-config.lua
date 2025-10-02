@@ -1,4 +1,4 @@
-IS_CB = vim.fn.getenv("HOSTNAME") == "shahmeera-dev"
+IS_CB = (vim.fn.getenv("HOSTNAME") == "shahmeera-dev") or (vim.fn.getenv("HOSTNAME") == "sc-r1rb5-ioasic16")
 
 return {
     {
