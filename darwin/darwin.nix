@@ -17,8 +17,10 @@
     casks = [
       "ghostty"
       "logi-options+"
+      "claude-code"
     ];
     onActivation.cleanup = "zap";
+    onActivation.upgrade = true;
     masApps = {
       "AdBlock for Safari" = 1402042596;
       "Amphetamine" = 937984704;
