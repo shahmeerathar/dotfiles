@@ -18,6 +18,7 @@
       "ghostty"
       "logi-options+"
       "claude-code"
+      "anki"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;

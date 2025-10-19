@@ -49,6 +49,7 @@ in {
       "/System/Applications/Maps.app"
       "/System/Applications/Home.app"
       "/System/Applications/iPhone Mirroring.app"
+      "/Applications/Anki.app"
     ];
   };
 }

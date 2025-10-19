@@ -19,6 +19,7 @@
       "/System/Applications/Mail.app"
       "/Applications/Microsoft Teams.app"
       "/System/Applications/Maps.app"
+      "/Applications/Anki.app"
     ];
   };
 }
