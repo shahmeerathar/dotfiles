@@ -24,9 +24,11 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.lua_ls.setup({
+
+            -- Configure lua_ls
+            vim.lsp.config('lua_ls', {
+                cmd = { 'lua-language-server' },
                 capabilities = capabilities,
                 settings = {
                     Lua = {
@@ -45,21 +47,51 @@ return {
                 }
             })
 
-            lspconfig.clangd.setup({
-                capabilities = capabilities,
+            -- Configure clangd
+            vim.lsp.config('clangd', {
                 cmd = {
                     "clangd",
                     "--header-insertion=never",
                     "--fallback-style=webkit"
-                }
+                },
+                capabilities = capabilities,
+            })
+
+            -- Configure ruff
+            vim.lsp.config('ruff', {
+                cmd = { 'ruff', 'server' },
+                capabilities = capabilities,
             })
 
             if (not IS_CB) then
-                lspconfig.pyright.setup({ capabilities = capabilities })
-                lspconfig.vtsls.setup({ capabilities = capabilities })
+                -- Configure rust_analyzer
+                vim.lsp.config('rust_analyzer', {
+                    cmd = { 'rust-analyzer' },
+                    capabilities = capabilities,
+                })
+
+                -- Configure pyright
+                vim.lsp.config('pyright', {
+                    cmd = { 'pyright-langserver', '--stdio' },
+                    capabilities = capabilities,
+                })
+
+                -- Configure vtsls
+                vim.lsp.config('vtsls', {
+                    cmd = { 'vtsls', '--stdio' },
+                    capabilities = capabilities,
+                })
             end
-            lspconfig.ruff.setup({ capabilities = capabilities })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+
+            -- Enable all configured LSP servers
+            vim.lsp.enable('lua_ls')
+            vim.lsp.enable('clangd')
+            vim.lsp.enable('ruff')
+            if (not IS_CB) then
+                vim.lsp.enable('rust_analyzer')
+                vim.lsp.enable('pyright')
+                vim.lsp.enable('vtsls')
+            end
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
