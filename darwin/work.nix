@@ -2,6 +2,7 @@
   homebrew = {
     casks = [
       "microsoft-teams"
+      "thinlinc-client"
     ];
   };
   system.defaults = {
