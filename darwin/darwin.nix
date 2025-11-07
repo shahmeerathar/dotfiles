@@ -84,12 +84,9 @@
     NSGlobalDomain.KeyRepeat = 1;
   };
 
-  launchd.daemons."com.shahmeerathar.kanata".serviceConfig = {
-    ProgramArguments = ["/run/current-system/sw/bin/kanata" "-c" "/Users/shahmeerathar/.config/kanata/kanata.kbd"];
+  launchd.daemons."com.shahmeerathar.karabiner-vhidmanager".serviceConfig = {
+    ProgramArguments = ["/Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager" "activate"];
     RunAtLoad = true;
-    KeepAlive = true;
-    StandardOutPath = "/Library/Logs/Kanata/kanata.out.log";
-    StandardErrorPath = "/Library/Logs/Kanata/kanata.err.log";
   };
 
   launchd.daemons."com.shahmeerathar.karabiner-vhiddaemon".serviceConfig = {
@@ -98,8 +95,12 @@
     KeepAlive = true;
   };
 
-  launchd.daemons."com.shahmeerathar.karabiner-vhidmanager".serviceConfig = {
-    ProgramArguments = ["/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon" "activate"];
+  launchd.daemons."com.shahmeerathar.kanata".serviceConfig = {
+    ProgramArguments = ["/run/current-system/sw/bin/kanata" "-c" "/Users/shahmeerathar/.config/kanata/kanata.kbd"];
     RunAtLoad = true;
+    KeepAlive = true;
+    StandardOutPath = "/Library/Logs/Kanata/kanata.out.log";
+    StandardErrorPath = "/Library/Logs/Kanata/kanata.err.log";
   };
+
 }
