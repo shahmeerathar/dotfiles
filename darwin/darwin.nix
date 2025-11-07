@@ -35,6 +35,7 @@
   };
 
   # Necessary for using flakes on this system.
+  nix.enable = false;
   nix.settings.experimental-features = "nix-command flakes";
 
   # Set Git commit hash for darwin-version.
