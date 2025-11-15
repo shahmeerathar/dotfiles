@@ -3,9 +3,11 @@
 
   programs.git = {
     enable = true;
-    userEmail = "shahmeer.athar@gmail.com";
-    userName = "Shahmeer Athar";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "shahmeer.athar@gmail.com";
+        name = "Shahmeer Athar";
+      };
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/id_ed25519.pub";

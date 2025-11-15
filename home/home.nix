@@ -49,8 +49,10 @@ in {
   programs.home-manager.enable = true;
 
   programs.git = {
-    extraConfig = {
+    settings = {
       core.editor = "nvim";
+      diff.tool = "nvimdiff";
+      difftool.prompt = false;
     };
   };
 

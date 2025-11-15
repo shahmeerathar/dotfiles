@@ -3,8 +3,12 @@
 
   programs.git = {
     enable = true;
-    userEmail = "shahmeer.athar@cerebras.net";
-    userName = "Shahmeer Athar";
+    settings = {
+      user = {
+        email = "shahmeer.athar@cerebras.net";
+        name = "Shahmeer Athar";
+      };
+    };
   };
 
   programs.zsh = {
