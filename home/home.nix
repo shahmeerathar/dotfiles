@@ -53,6 +53,7 @@ in {
       core.editor = "nvim";
       diff.tool = "nvimdiff";
       difftool.prompt = false;
+      init.defaultBranch = "main";
     };
   };
 
