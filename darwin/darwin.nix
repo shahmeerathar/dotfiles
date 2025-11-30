@@ -23,7 +23,7 @@
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
     masApps = {
-      "AdBlock for Safari" = 1402042596;
+      "uBlock Origin Lite" = 6745342698;
       "Amphetamine" = 937984704;
       "PCalc" = 403504866;
     };
