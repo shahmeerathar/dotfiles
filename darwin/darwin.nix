@@ -24,6 +24,7 @@
     onActivation.upgrade = true;
     masApps = {
       "uBlock Origin Lite" = 6745342698;
+      "Hush Nag Block" = 1544743900;
       "Amphetamine" = 937984704;
       "PCalc" = 403504866;
     };
