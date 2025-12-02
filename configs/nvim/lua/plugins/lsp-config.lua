@@ -12,11 +12,11 @@ return {
         config = function()
             if (IS_CB) then
                 require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls", "ruff" }
+                    ensure_installed = { "lua_ls", "ruff", "ty" }
                 })
             else
                 require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls", "clangd", "ruff", "rust_analyzer" }
+                    ensure_installed = { "lua_ls", "ruff", "ty", "clangd", "rust_analyzer" }
                 })
             end
         end
@@ -63,34 +63,27 @@ return {
                 capabilities = capabilities,
             })
 
+            -- Configure ty
+            vim.lsp.config('ty', {
+                cmd = { 'ty', 'server' },
+                capabilities = capabilities,
+            })
+
             if (not IS_CB) then
                 -- Configure rust_analyzer
                 vim.lsp.config('rust_analyzer', {
                     cmd = { 'rust-analyzer' },
                     capabilities = capabilities,
                 })
-
-                -- Configure pyright
-                vim.lsp.config('pyright', {
-                    cmd = { 'pyright-langserver', '--stdio' },
-                    capabilities = capabilities,
-                })
-
-                -- Configure vtsls
-                vim.lsp.config('vtsls', {
-                    cmd = { 'vtsls', '--stdio' },
-                    capabilities = capabilities,
-                })
             end
 
             -- Enable all configured LSP servers
             vim.lsp.enable('lua_ls')
-            vim.lsp.enable('clangd')
             vim.lsp.enable('ruff')
+            vim.lsp.enable('ty')
+            vim.lsp.enable('clangd')
             if (not IS_CB) then
                 vim.lsp.enable('rust_analyzer')
-                vim.lsp.enable('pyright')
-                vim.lsp.enable('vtsls')
             end
 
             vim.api.nvim_create_autocmd('LspAttach', {
