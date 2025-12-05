@@ -10,6 +10,7 @@
     pkgs.oh-my-zsh
     pkgs.raycast
     pkgs.starship
+    pkgs.python3
   ];
 
   homebrew = {
