@@ -114,7 +114,7 @@ return {
                     opts.desc = "vim.lsp.buf.format()"
                     vim.keymap.set('n', '<leader>cf', formatting_func, opts)
 
-                    if (not ((lsp_name == 'ruff' or lsp_name == 'clangd') and IS_CB)) then
+                    if (not ((lsp_name == 'ruff' or lsp_name == 'ty' or lsp_name == 'clangd') and IS_CB)) then
                         vim.api.nvim_create_autocmd('BufWritePre', {
                             buffer = event.buf,
                             desc = 'Format on save',
