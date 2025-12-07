@@ -61,19 +61,18 @@ in {
     enable = true;
     keyMode = "vi";
     baseIndex = 1;
-    historyLimit = 5000;
+    historyLimit = 10000;
     clock24 = true;
     plugins = [
       {
         plugin = tmux-kanagawa;
         extraConfig = ''
-          set -g @kanagawa-theme 'dragon'
+          set -g @kanagawa-theme 'wave'
           set -g @kanagawa-show-flags true
           set -g @kanagawa-show-empty-plugins false
-          set -g @kanagawa-git-disable-status false
-          set -g @kanagawa-git-show-remote-status true
           set -g @kanagawa-show-ssh-only-when-connected true
-          set -g @kanagawa-plugins "git ssh-session"
+          set -g @kanagawa-plugins "ssh-session"
+          set -g @kanagawa-ignore-window-colors true
         '';
       }
     ];
