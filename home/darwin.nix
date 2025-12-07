@@ -36,5 +36,6 @@
     ".config/ghostty".source = ../configs/ghostty;
     ".config/kanata".source = ../configs/kanata;
     ".config/starship".source = ../configs/starship;
+    ".hushlogin" = {text = "";};
   };
 }
