@@ -15,18 +15,6 @@
         sha256 = "sha256-qP9pmJYbcGb1NiophTNexMF/nAQivqUENg8stsOERY4=";
       };
     };
-  tmux-kanagawa =
-    pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "kanagawa";
-      version = "master";
-      src = pkgs.fetchFromGitHub {
-        owner = "shahmeerathar";
-        repo = "tmux-kanagawa";
-        rev = "master";
-        sha256 = "sha256-XyXP1BkV2QAFwr5AIdR6nQ6xjL5KJkuRr0j6iZkzEdA=";
-      };
-    };
 in {
   home.stateVersion = "25.05";
   home.packages = [
@@ -63,19 +51,6 @@ in {
     baseIndex = 1;
     historyLimit = 10000;
     clock24 = true;
-    plugins = [
-      {
-        plugin = tmux-kanagawa;
-        extraConfig = ''
-          set -g @kanagawa-theme 'wave'
-          set -g @kanagawa-show-flags true
-          set -g @kanagawa-show-empty-plugins false
-          set -g @kanagawa-show-ssh-only-when-connected true
-          set -g @kanagawa-plugins "ssh-session"
-          set -g @kanagawa-ignore-window-colors true
-        '';
-      }
-    ];
     extraConfig =
       builtins.readFile ../configs/tmux/tmux.conf;
   };
