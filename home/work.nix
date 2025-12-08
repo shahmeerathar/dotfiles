@@ -14,6 +14,7 @@
   programs.zsh = {
     shellAliases = {
       dev = "ssh shahmeera@shahmeera-dev";
+      io = "ssh shahmeera@ioasic16";
     };
   };
 }
