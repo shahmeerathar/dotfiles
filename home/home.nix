@@ -57,6 +57,10 @@ in {
 
   home.file = {
     ".config/tmux/tmux-nerd-font-window-name.yml".source = ../configs/tmux/tmux-nerd-font-window-name.yml;
+    ".config/tmux/tmux-popup.sh".source = ../configs/tmux/tmux-popup.sh;
+    ".config/tmux/tmux-popup.sh".executable = true;
+    ".config/tmux/tmux-kill-orphan-popups.sh".source = ../configs/tmux/tmux-kill-orphan-popups.sh;
+    ".config/tmux/tmux-kill-orphan-popups.sh".executable = true;
     ".config/nvim/init.lua".source = ../configs/nvim/init.lua;
     ".config/nvim/lua".source = ../configs/nvim/lua;
     ".config/vim".source = ../configs/vim;
