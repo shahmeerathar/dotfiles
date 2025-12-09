@@ -7,9 +7,7 @@
     pkgs.mas
     pkgs.monitorcontrol
     pkgs.obsidian
-    pkgs.oh-my-zsh
     pkgs.raycast
-    pkgs.starship
   ];
 
   homebrew = {
