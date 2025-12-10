@@ -84,6 +84,13 @@ in {
       builtins.readFile ../configs/tmux/tmux.conf;
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+    silent = true;
+  };
+
   home.file = {
     ".config/tmux/tmux-nerd-font-window-name.yml".source = ../configs/tmux/tmux-nerd-font-window-name.yml;
     ".config/tmux/tmux-popup.sh".source = ../configs/tmux/tmux-popup.sh;
