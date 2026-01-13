@@ -29,7 +29,7 @@ in {
     pkgs.iina
   ];
   homebrew.masApps = {
-    "Adobe Lightroom" = 1451544217;
+    "Logic Pro" = 634148309;
     "Starry Landscape Tracker" = 550326617;
     "Xcode" = 497799835;
   };
