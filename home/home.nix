@@ -32,6 +32,7 @@ in {
     pkgs.tmux
     pkgs.yq
     pkgs.zoxide
+    pkgs.gh
   ];
 
   fonts.fontconfig.enable = true;
