@@ -3,6 +3,7 @@
     casks = [
       "microsoft-teams"
       "thinlinc-client"
+      "visual-studio-code"
     ];
   };
   system.defaults = {
