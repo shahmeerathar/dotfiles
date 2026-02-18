@@ -32,6 +32,7 @@ in {
     "Logic Pro" = 634148309;
     "Starry Landscape Tracker" = 550326617;
     "Xcode" = 497799835;
+    "Complete Anatomy" = 1141323850;
   };
 
   system.defaults = {
