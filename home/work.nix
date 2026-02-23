@@ -13,7 +13,7 @@
 
   programs.zsh = {
     shellAliases = {
-      dev = "ssh shahmeera@shahmeera-dev";
+      dev = "ssh shahmeera@shahmeera-vm";
       io = "ssh shahmeera@ioasic16";
     };
   };

@@ -55,6 +55,7 @@
     darwinConfigurations."Shahmeers-MacBook-Pro" = mkDarwinConfig [./darwin/personal.nix] ./home/personal.nix;
     darwinConfigurations."Shahmeers-Work-MacBook-Pro" = mkDarwinConfig [./darwin/work.nix] ./home/work.nix;
     homeConfigurations."shahmeera-dev" = mkHomeConfig;
+    homeConfigurations."shahmeera-vm" = mkHomeConfig;
     homeConfigurations."ioasic" = mkHomeConfig;
   };
 }
