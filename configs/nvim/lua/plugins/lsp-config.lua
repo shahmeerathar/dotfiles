@@ -76,6 +76,12 @@ return {
                     cmd = { 'rust-analyzer' },
                     capabilities = capabilities,
                 })
+
+                -- Configure sourcekit for swift
+                vim.lsp.config('sourcekit', {
+                    cmd = { 'sourcekit-lsp' },
+                    capabilities = capabilities,
+                })
             end
 
             -- Enable all configured LSP servers
@@ -85,6 +91,7 @@ return {
             vim.lsp.enable('clangd')
             if (not IS_CB) then
                 vim.lsp.enable('rust_analyzer')
+                vim.lsp.enable('sourcekit')
             end
 
             vim.api.nvim_create_autocmd('LspAttach', {
