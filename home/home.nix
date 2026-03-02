@@ -100,6 +100,7 @@ in {
     ".config/tmux/tmux-kill-orphan-popups.sh".executable = true;
     ".config/nvim/init.lua".source = ../configs/nvim/init.lua;
     ".config/nvim/lua".source = ../configs/nvim/lua;
+    ".config/nvim/after".source = ../configs/nvim/after;
     ".config/vim".source = ../configs/vim;
     ".config/starship".source = ../configs/starship;
   };
