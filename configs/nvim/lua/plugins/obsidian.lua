@@ -26,4 +26,5 @@ return {
         },
         disable_frontmatter = true,
     },
+    enabled = vim.loop.os_uname().sysname == "Darwin",
 }
