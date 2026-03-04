@@ -36,6 +36,10 @@ return {
         end
     },
     {
-        "tpope/vim-fugitive"
+        "tpope/vim-fugitive",
+        config = function()
+            vim.keymap.set('n', '<leader>gl', '<cmd>vertical Git log<CR>')
+            vim.keymap.set('n', '<leader>gf', '<cmd>vertical Git log --follow %<CR>')
+        end
     }
 }
