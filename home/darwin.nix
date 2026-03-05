@@ -18,6 +18,8 @@
 
   home.packages = [
     pkgs.nodejs_24
+    pkgs.ghostscript
+    pkgs.imagemagick
   ];
 
   # needed for basictex

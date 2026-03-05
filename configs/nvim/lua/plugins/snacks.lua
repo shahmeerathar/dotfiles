@@ -1,11 +1,16 @@
 return {
     "folke/snacks.nvim",
+    dependencies = {
+        'nvim-mini/mini.nvim',
+        'nvim-tree/nvim-web-devicons',
+    },
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
     opts = {
         explorer = { enabled = true },
         gh = { enabled = true },
+        image = { enabled = true },
         picker = {
             enabled = true,
             layout = {
