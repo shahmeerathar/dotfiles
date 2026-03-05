@@ -21,6 +21,11 @@ vim.opt.splitbelow = true
 vim.opt.showmode = false
 vim.opt.shortmess:append('S')
 
+vim.opt.foldenable = false
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevelstart = 99
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
 vim.keymap.set('n', '<leader><leader>', ':noh<CR>', { silent = true, desc = "Clear search highlighting" })
 
 vim.keymap.set('n', '<M-o>', ':copen<CR>', { silent = true, desc = "Quickfix open" })
