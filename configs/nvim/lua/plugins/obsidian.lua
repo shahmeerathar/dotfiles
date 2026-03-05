@@ -1,30 +1,38 @@
 return {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*",
-    lazy = true,
-    ft = "markdown",
-    event = {
-        "BufReadPre /Users/shahmeerathar/Notes/*.md",
-        "BufNewFile /Users/shahmeerathar/Notes/*.md",
-    },
+    ---@module 'obsidian'
+    ---@type obsidian.config
     dependencies = {
-        "nvim-lua/plenary.nvim",
         'nvim-telescope/telescope.nvim',
         "hrsh7th/nvim-cmp",
         "nvim-treesitter/nvim-treesitter",
     },
     opts = {
+        legacy_commands = false,
+        frontmatter = {
+            enabled = false,
+        },
+        note = {
+            template = "Templates/Default.md"
+        },
         workspaces = {
             {
                 name = "Notes",
-                path = "/Users/shahmeerathar/Notes",
+                path = "~/Notes",
             },
         },
-        completion = {
-            nvim_cmp = true,
-            min_chars = 2,
+        note_id_func = (function(title)
+            return title
+        end),
+        checkbox = {
+            create_new = false,
+            order = { " ", "x" },
         },
-        disable_frontmatter = true,
     },
+    vim.keymap.set("n", "<leader>ot", "<cmd>Obsidian today<CR>"),
+    vim.keymap.set("n", "<leader>od", "<cmd>Obsidian dailies<CR>"),
+    vim.keymap.set("n", "<leader>of", "<cmd>Obsidian quick_switch<CR>"),
+    vim.keymap.set("n", "<leader>os", "<cmd>Obsidian search<CR>"),
     enabled = vim.loop.os_uname().sysname == "Darwin",
 }
