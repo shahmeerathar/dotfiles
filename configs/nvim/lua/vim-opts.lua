@@ -73,3 +73,20 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
         vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN)
     end,
 })
+
+-- Set markdown files to wrap
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.wo.wrap = true
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*", -- all other filetypes
+    callback = function()
+        if vim.bo.filetype ~= "markdown" then
+            vim.wo.wrap = false
+        end
+    end,
+})
