@@ -33,6 +33,7 @@ in {
     pkgs.yq
     pkgs.zoxide
     pkgs.gh
+    pkgs.tree-sitter
   ];
 
   fonts.fontconfig.enable = true;

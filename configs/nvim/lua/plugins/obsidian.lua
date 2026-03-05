@@ -4,7 +4,7 @@ return {
     ---@module 'obsidian'
     ---@type obsidian.config
     dependencies = {
-        'nvim-telescope/telescope.nvim',
+        "folke/snacks.nvim",
         "hrsh7th/nvim-cmp",
         "nvim-treesitter/nvim-treesitter",
     },
