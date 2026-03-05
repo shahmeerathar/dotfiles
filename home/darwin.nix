@@ -16,6 +16,10 @@
     "Notes" = {source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes";};
   };
 
+  home.packages = [
+    pkgs.nodejs_24
+  ];
+
   # needed for basictex
   programs.zsh.initContent = ''
     eval "$(/usr/libexec/path_helper)"
