@@ -13,13 +13,17 @@
   homebrew = {
     enable = true;
     taps = ["anomalyco/tap"];
-    brews = ["anomalyco/tap/opencode"];
+    brews = [
+      "anomalyco/tap/opencode"
+      "pandoc"
+    ];
     casks = [
       "ghostty"
       "logi-options+"
       "claude-code"
       "codex"
       "anki"
+      "basictex"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
