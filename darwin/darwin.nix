@@ -23,7 +23,6 @@
       "claude-code"
       "codex"
       "anki"
-      "basictex"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;

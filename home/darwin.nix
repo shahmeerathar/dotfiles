@@ -21,9 +21,4 @@
     pkgs.ghostscript
     pkgs.imagemagick
   ];
-
-  # needed for basictex
-  programs.zsh.initContent = ''
-    eval "$(/usr/libexec/path_helper)"
-  '';
 }

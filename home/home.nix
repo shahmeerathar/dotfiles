@@ -34,6 +34,19 @@ in {
     pkgs.zoxide
     pkgs.gh
     pkgs.tree-sitter
+    (pkgs.texlive.combine {
+      inherit
+        (pkgs.texlive)
+        scheme-small
+        amsmath
+        amsfonts
+        mathtools
+        xcolor
+        standalone
+        varwidth
+        preview
+        ;
+    })
   ];
 
   fonts.fontconfig.enable = true;
