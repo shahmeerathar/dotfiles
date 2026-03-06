@@ -1,39 +1,58 @@
 return {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa",
-    lazy = false,
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000,
     config = function()
-        require("kanagawa").setup({
-            theme = "wave",
-            colors = {
-                theme = {
-                    all = {
-                        ui = {
-                            bg_gutter = "none"
-                        }
-                    }
-                }
+        require('github-theme').setup({
+            options = {
+                compile_path = vim.fn.stdpath('cache') .. '/github-theme', -- Compiled file's destination location
+                compile_file_suffix = '_compiled',                         -- Compiled file suffix
+                hide_end_of_buffer = true,                                 -- Hide the '~' character at the end of the buffer for a cleaner look
+                hide_nc_statusline = true,                                 -- Override the underline style for non-active statuslines
+                transparent = true,                                        -- Disable setting bg (make neovim's background transparent)
+                terminal_colors = true,                                    -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+                dim_inactive = false,                                      -- Non focused panes set to alternative background
+                module_default = true,                                     -- Default enable value for modules
+                styles = {                                                 -- Style to be applied to different syntax groups
+                    comments = 'NONE',                                     -- Value is any valid attr-list value `:help attr-list`
+                    functions = 'NONE',
+                    keywords = 'NONE',
+                    variables = 'NONE',
+                    conditionals = 'NONE',
+                    constants = 'NONE',
+                    numbers = 'NONE',
+                    operators = 'NONE',
+                    strings = 'NONE',
+                    types = 'NONE',
+                },
+                inverse = { -- Inverse highlight for different types
+                    match_paren = false,
+                    visual = false,
+                    search = false,
+                },
+                darken = { -- Darken floating windows and sidebar-like windows
+                    floats = false,
+                    sidebars = {
+                        enable = true,
+                        list = {}, -- Apply dark background to specific windows
+                    },
+                },
+                modules = { -- List of various plugins and additional options
+                    -- ...
+                },
             },
-            overrides = function(colors)
-                local theme = colors.theme
-                return {
-                    NormalFloat = { bg = "none" },
-                    FloatBorder = { bg = "none" },
-                    FloatTitle = { bg = "none" },
-
-                    -- Save an hlgroup with dark background and dimmed foreground
-                    -- so that you can use it where your still want darker windows.
-                    -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-                    NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-
-                    -- Popular plugins that open floats will link to NormalFloat by default;
-                    -- set their background accordingly if you wish to keep them dark and borderless
-                    LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                    MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                }
-            end,
+            palettes = {},
+            specs = {},
+            groups = {
+                all = {
+                    ["@markup.raw.markdown_inline"] = { bg = "#2d333b", fg = "#e6edf3" },
+                    ["@markup.raw.block"]           = { bg = "#2d333b" },
+                },
+            },
         })
-        vim.cmd.colorscheme "kanagawa-wave"
+
+        -- setup must be called before loading
+        vim.cmd('colorscheme github_dark')
     end
 }
