@@ -90,3 +90,12 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
+
+-- Register custom filetypes with Neovim's Lua filetype API so that
+-- vim.filetype.match() works (used by snacks picker preview, among others).
+-- The ftdetect/casm.vim autocmd only fires for real buffers, not match().
+vim.filetype.add({
+    extension = {
+        casm = "casm",
+    },
+})
