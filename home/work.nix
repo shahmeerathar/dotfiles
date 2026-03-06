@@ -15,6 +15,7 @@
     shellAliases = {
       dev = "ssh shahmeera@shahmeera-vm";
       io = "ssh shahmeera@ioasic16";
+      asic = "ssh shahmeera@asic-hi3";
     };
   };
 }

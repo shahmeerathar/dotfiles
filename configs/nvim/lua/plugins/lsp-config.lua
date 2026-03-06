@@ -1,5 +1,6 @@
 IS_CB = (vim.fn.getenv("HOSTNAME") == "shahmeera-dev") or (vim.fn.getenv("HOSTNAME") == "sc-r1rb5-ioasic16") or
-    (vim.fn.getenv("HOSTNAME") == "shahmeera-vm.cerebras.aws")
+    (vim.fn.getenv("HOSTNAME") == "shahmeera-vm.cerebras.aws") or
+    (vim.fn.getenv("HOSTNAME") == "asic-hi3.cerebrassc.local")
 
 return {
     {
