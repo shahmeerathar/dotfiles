@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   imports = [./darwin.nix];
 
+  home.packages = [
+    pkgs.mosh
+  ];
+
   programs.git = {
     enable = true;
     settings = {
@@ -13,9 +17,9 @@
 
   programs.zsh = {
     shellAliases = {
-      dev = "ssh shahmeera@shahmeera-vm";
-      io = "ssh shahmeera@ioasic16";
-      asic = "ssh shahmeera@asic-hi3";
+      dev = "mosh shahmeera@shahmeera-vm";
+      io = "mosh shahmeera@ioasic16";
+      asic = "mosh shahmeera@asic-hi3";
     };
   };
 }
