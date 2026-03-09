@@ -3,6 +3,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
         build = ":TSUpdate",
+        branch = "master",
         config = function()
             local config = require("nvim-treesitter.configs")
             require 'nvim-treesitter.install'.compilers = { "clang" }
