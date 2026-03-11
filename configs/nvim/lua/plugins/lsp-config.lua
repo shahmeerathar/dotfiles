@@ -132,20 +132,6 @@ return {
                     end
                 end
             })
-
-            if (IS_CB) then
-                vim.api.nvim_create_autocmd("BufWritePost", {
-                    pattern = "*.{c,cc,cpp,h,hh,hpp}",
-                    desc = 'Format on save',
-                    callback = function(args)
-                        local filename = vim.api.nvim_buf_get_name(args.buf)
-                        local cmd = "/cb/tools/llvm/201910211756-206/bin/clang-format -i " ..
-                            vim.fn.shellescape(filename)
-                        os.execute(cmd)
-                        vim.cmd("silent! edit!")
-                    end
-                })
-            end
         end
     }
 }
