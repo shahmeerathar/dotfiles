@@ -3,25 +3,21 @@ return {
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
         build = ":TSUpdate",
-        branch = "master",
+        branch = "main",
         config = function()
-            local config = require("nvim-treesitter.configs")
-            require 'nvim-treesitter.install'.compilers = { "clang" }
-            config.setup({
-                ensure_installed = { "lua", "cpp", "python", "rust", "bash", "markdown", "latex", "regex" },
-                highlight = { enable = true },
-                indent = { enable = true },
-                fold = { enable = true },
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<leader>.",
-                        node_incremental = "<leader>.",
-                        scope_incremental = nil,
-                        node_decremental = "<leader>,",
-                    },
-                },
-                textobjects = { enable = true }
+            require("nvim-treesitter").install({
+                "lua", "cpp", "python", "rust", "bash", "markdown", "latex", "regex"
+            })
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "lua", "cpp", "python", "rust", "sh", "bash", "markdown", "tex", "latex" },
+                callback = function(args)
+                    if pcall(vim.treesitter.start) then
+                        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                        vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                        vim.opt_local.foldmethod = "expr"
+                    end
+                end,
             })
         end
     },
