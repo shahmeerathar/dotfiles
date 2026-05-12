@@ -16,6 +16,8 @@
     brews = [
       "anomalyco/tap/opencode"
       "pandoc"
+      "presenterm"
+      "weasyprint"
     ];
     casks = [
       "ghostty"
