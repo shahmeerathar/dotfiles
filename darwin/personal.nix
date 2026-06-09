@@ -35,6 +35,10 @@ in {
     "Complete Anatomy" = 1141323850;
   };
 
+  homebrew.casks = [
+    "qgis"
+  ];
+
   system.defaults = {
     dock.persistent-apps = [
       "/System/Applications/Music.app"
