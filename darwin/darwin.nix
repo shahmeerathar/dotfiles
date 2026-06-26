@@ -16,6 +16,7 @@
     brews = [
       "anomalyco/tap/opencode"
       "pandoc"
+      "pi-coding-agent"
       "presenterm"
       "weasyprint"
     ];
