@@ -4,7 +4,6 @@
       "microsoft-teams"
       "thinlinc-client"
       "visual-studio-code"
-      "firefox"
     ];
   };
   system.defaults = {
