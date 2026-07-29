@@ -33,6 +33,7 @@ in {
     "Starry Landscape Tracker" = 550326617;
     "Xcode" = 497799835;
     "Complete Anatomy" = 1141323850;
+    "Adobe Lightroom" = 1451544217;
   };
 
   homebrew.casks = [
