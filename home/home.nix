@@ -33,6 +33,7 @@ in {
     pkgs.yq
     pkgs.zoxide
     pkgs.gh
+    pkgs.jujutsu
     pkgs.tree-sitter
     (pkgs.texlive.combine {
       inherit
