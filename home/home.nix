@@ -68,6 +68,7 @@ in {
       fzfpreview = "fzf --preview=\"bat --color=always {}\" --height=100% --border=none --layout=default";
       vim = "vim -u $HOME/.config/vim/vimrc";
       vi = "vi -u $HOME/.config/vim/vimrc";
+      emacs = "emacs -nw";
     };
     sessionVariables = {
       STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml";
