@@ -5,4 +5,4 @@ mouse-hide-while-typing = true
 window-padding-balance = true
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 background-opacity=1
-macos-option-as-alt=left
+macos-option-as-alt=true
