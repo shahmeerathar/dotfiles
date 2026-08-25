@@ -27,6 +27,7 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.neovim
+    pkgs.emacs
     pkgs.nerd-fonts.symbols-only
     pkgs.ripgrep
     pkgs.tmux
