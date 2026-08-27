@@ -27,7 +27,7 @@ in {
     pkgs.fd
     pkgs.fzf
     pkgs.neovim
-    pkgs.emacs
+    pkgs.emacs31
     pkgs.nerd-fonts.symbols-only
     pkgs.ripgrep
     pkgs.tmux
@@ -36,6 +36,7 @@ in {
     pkgs.gh
     pkgs.jujutsu
     pkgs.tree-sitter
+    pkgs.jetbrains-mono
     (pkgs.texlive.combine {
       inherit
         (pkgs.texlive)
