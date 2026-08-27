@@ -37,19 +37,15 @@ in {
     pkgs.jujutsu
     pkgs.tree-sitter
     pkgs.jetbrains-mono
-    (pkgs.texlive.combine {
-      inherit
-        (pkgs.texlive)
-        scheme-small
-        amsmath
-        amsfonts
-        mathtools
-        xcolor
-        standalone
-        varwidth
-        preview
-        ;
-    })
+    (pkgs.texliveSmall.withPackages (ps: [
+      ps.amsmath
+      ps.amsfonts
+      ps.mathtools
+      ps.xcolor
+      ps.standalone
+      ps.varwidth
+      ps.preview
+    ]))
   ];
 
   fonts.fontconfig.enable = true;
