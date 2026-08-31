@@ -20,5 +20,6 @@
     pkgs.nodejs_24
     pkgs.ghostscript
     pkgs.imagemagick
+    pkgs.zoom-us
   ];
 }
