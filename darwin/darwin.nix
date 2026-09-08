@@ -34,6 +34,7 @@
       "Hush Nag Blocker" = 1544743900;
       "Amphetamine" = 937984704;
       "PCalc" = 403504866;
+      "Adobe Lightroom" = 1451544217;
     };
   };
 
