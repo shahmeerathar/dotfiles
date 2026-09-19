@@ -26,6 +26,7 @@
       "claude-code"
       "codex"
       "anki"
+      "firefox"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
