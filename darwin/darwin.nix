@@ -27,6 +27,7 @@
       "codex"
       "anki"
       "firefox"
+      "cold-turkey-blocker"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
