@@ -7,7 +7,6 @@
     pkgs.mas
     pkgs.monitorcontrol
     pkgs.obsidian
-    pkgs.raycast
   ];
 
   homebrew = {
@@ -22,6 +21,7 @@
     ];
     casks = [
       "ghostty"
+      "raycast"
       "logi-options+"
       "claude-code"
       "codex"
