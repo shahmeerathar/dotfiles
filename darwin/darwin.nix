@@ -11,6 +11,7 @@
 
   homebrew = {
     enable = true;
+    enableZshIntegration = true;
     taps = ["anomalyco/tap"];
     brews = [
       "anomalyco/tap/opencode"
