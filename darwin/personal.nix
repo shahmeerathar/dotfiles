@@ -36,7 +36,7 @@ in {
   };
 
   homebrew.casks = [
-    "qgis"
+    "affinity"
   ];
 
   system.defaults = {
