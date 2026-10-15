@@ -29,6 +29,7 @@
       "anki"
       "firefox"
       "cold-turkey-blocker"
+      "tailscale-app"
     ];
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
