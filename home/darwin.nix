@@ -21,5 +21,6 @@
     pkgs.ghostscript
     pkgs.imagemagick
     pkgs.zoom-us
+    pkgs.mosh
   ];
 }

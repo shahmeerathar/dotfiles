@@ -1,10 +1,6 @@
 {pkgs, ...}: {
   imports = [./darwin.nix];
 
-  home.packages = [
-    pkgs.mosh
-  ];
-
   programs.git = {
     enable = true;
     settings = {
