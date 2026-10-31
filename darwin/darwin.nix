@@ -26,6 +26,7 @@
       "logi-options+"
       "claude-code"
       "codex"
+      "chatgpt"
       "anki"
       "firefox"
       "cold-turkey-blocker"
