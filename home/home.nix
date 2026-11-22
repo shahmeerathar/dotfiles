@@ -22,6 +22,7 @@ in {
     pkgs.starship
     pkgs.bat
     pkgs.alejandra
+    pkgs.delta
     pkgs.dust
     pkgs.eza
     pkgs.fd

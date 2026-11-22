@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+  # $ nix search nixpkgs wget
   environment.systemPackages = [
     pkgs.aerospace
     pkgs.kanata
