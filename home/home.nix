@@ -23,6 +23,8 @@ in {
     pkgs.bat
     pkgs.alejandra
     pkgs.delta
+    pkgs.hunk
+    pkgs.tuicr
     pkgs.dust
     pkgs.eza
     pkgs.fd
