@@ -98,6 +98,7 @@ in {
     baseIndex = 1;
     historyLimit = 10000;
     clock24 = true;
+    mouse = true;
     extraConfig =
       builtins.readFile ../configs/tmux/tmux.conf;
   };
